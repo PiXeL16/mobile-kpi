@@ -6,9 +6,15 @@ module MobileKPI
   module DataSource
     # Class in charge of getting the iOS Rating metrics
     class IOSRating
+
+      def self.rating_endpoint
+        @app_id ||= ENV["ITUNES_APP_ID"]
+        "http://itunes.apple.com/lookup?id=#{@app_id}"
+      end
+
       def self.rating
         @app_id ||= ENV["ITUNES_APP_ID"]
-        content = JSON.parse(Faraday.get("http://itunes.apple.com/lookup?id=#{@app_id}").body)
+        content = JSON.parse(Faraday.get(rating_endpoint).body)
         {
             platform: "iOS",
             app_version: content["results"][0]["version"],

@@ -1,0 +1,7 @@
+# It's easier for non Ruby people to just always use
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
