@@ -1,13 +1,13 @@
 module MobileKPI
   module Manager
     # Rating manager
-    class IOSRatingManager < Manager
+    class AndroidRatingManager < Manager
 
       attr_reader :data_source, :database
 
       def self.build
-        @app_id ||= ENV["ITUNES_APP_ID"]
-        data_source = MobileKPI::DataSource::IOSRating.new(@app_id)
+        @app_package ||= ENV["ANDROID_APP_PACKAGE"]
+        data_source = MobileKPI::DataSource::AndroidRating.new(@app_package)
         database = MobileKPI::Database.new
         self.new(data_source, database)
       end
@@ -18,8 +18,8 @@ module MobileKPI
       end
 
       def work
-        ios_rating = @data_source.rating
-        @database.store_rating(ios_rating)
+        rating = @data_source.rating
+        @database.store_rating(rating)
       end
 
     end

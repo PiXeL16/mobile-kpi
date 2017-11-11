@@ -8,6 +8,7 @@ gem "rake"
 gem "mysql2"
 gem "sequel"
 gem 'dotenv'
+gem 'market_bot'
 
 group :development do
   gem "pry"

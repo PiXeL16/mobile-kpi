@@ -17,12 +17,16 @@ module MobileKPI
 
       def rating
         content = JSON.parse(Faraday.get(rating_endpoint).body)
-        {
-            platform: "iOS",
-            app_version: content["results"][0]["version"],
-            average_rating: content["results"][0]["averageUserRatingForCurrentVersion"],
-            rating_count: content["results"][0]["userRatingCountForCurrentVersion"]
-        }
+        app_rating = MobileKPI::Entity::AppRating.new
+
+        app_rating.platform = "iOS"
+        app_rating.name = content["results"][0]["trackName"]
+        app_rating.version = content["results"][0]["version"]
+        app_rating.rating = content["results"][0]["averageUserRatingForCurrentVersion"]
+        app_rating.rating_count = content["results"][0]["userRatingCountForCurrentVersion"]
+
+        app_rating
+
       end
     end
   end

@@ -1,4 +1,3 @@
-
 describe MobileKPI::DataSource::IOSRating do
 
   before(:each) do
@@ -16,10 +15,11 @@ describe MobileKPI::DataSource::IOSRating do
 
   it ".rating" do
     rating = @rating.rating
-    expect(rating[:platform]).to eq("iOS")
-    expect(rating[:app_version]).to_not be_nil
-    expect(rating[:average_rating]).to_not be_nil
-    expect(rating[:rating_count]).to_not be_nil
+    expect(rating.platform).to eq("iOS")
+    expect(rating.name).to_not be_nil
+    expect(rating.version).to_not be_nil
+    expect(rating.rating).to_not be_nil
+    expect(rating.rating_count).to_not be_nil
   end
 
 end

@@ -12,6 +12,7 @@ module MobileKPI
         @_db.create_table :ratings do
           primary_key :id
           String      :platform
+          String      :app_name
           String      :app_version
           DateTime    :date
           Float       :average_rating
@@ -22,13 +23,14 @@ module MobileKPI
       @_db
     end
 
-    def store_rating(platform: nil, app_version: nil, average_rating: nil, rating_count: nil)
+    def store_rating(app_rating)
       database[:ratings].insert(
-          platform: platform,
-          app_version: app_version,
+          platform: app_rating.platform,
+          app_name: app_rating.name,
+          app_version: app_rating.version,
           date: Time.now,
-          average_rating: average_rating,
-          rating_count: rating_count
+          average_rating: app_rating.rating,
+          rating_count: app_rating.rating_count
       )
     end
 

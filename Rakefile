@@ -4,7 +4,7 @@ require_relative "app/mobile_kpi"
 task :ratings do
   begin
     puts "Starting ratings job".blue
-    rating_job = MobileKPI::Job::RatingJob.new
+    rating_job = MobileKPI::Job::RatingJob.build
     rating_job.trigger
     puts "Ratings stored succesfully".green
   rescue => ex
