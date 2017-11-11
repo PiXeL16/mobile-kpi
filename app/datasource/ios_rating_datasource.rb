@@ -1,5 +1,5 @@
-require 'json'
-require 'faraday'
+require "json"
+require "faraday"
 
 module MobileKPI
   # Provides the iOS DataSource to get ratings

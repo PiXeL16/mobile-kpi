@@ -1,5 +1,5 @@
-require 'sequel'
-require 'mysql2'
+require "sequel"
+require "mysql2"
 
 # Main database representation
 module MobileKPI
@@ -19,17 +19,17 @@ module MobileKPI
         end
       end
 
-      return @_db
+      @_db
     end
 
     def self.store_rating(platform: nil, app_version: nil, average_rating: nil, rating_count: nil)
-      self.database[:ratings].insert({
+      self.database[:ratings].insert(
           platform: platform,
           app_version: app_version,
           date: Time.now,
           average_rating: average_rating,
           rating_count: rating_count
-                                     })
+      )
     end
 
   end

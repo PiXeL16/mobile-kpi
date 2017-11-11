@@ -3,7 +3,7 @@ module MobileKPI
     # Jobs base class
     class Manager
       def work
-        raise 'Override this'
+        raise "Override this"
       end
     end
   end
