@@ -5,8 +5,8 @@ require "mysql2"
 module MobileKPI
   # Database Class
   class Database
-    def self.database
-      @_db ||= Sequel.connect(ENV['DATABASE_URL'])
+    def database
+      @_db ||= Sequel.connect(ENV["DATABASE_URL"])
 
       unless @_db.table_exists?("ratings")
         @_db.create_table :ratings do
@@ -22,8 +22,8 @@ module MobileKPI
       @_db
     end
 
-    def self.store_rating(platform: nil, app_version: nil, average_rating: nil, rating_count: nil)
-      self.database[:ratings].insert(
+    def store_rating(platform: nil, app_version: nil, average_rating: nil, rating_count: nil)
+      database[:ratings].insert(
           platform: platform,
           app_version: app_version,
           date: Time.now,

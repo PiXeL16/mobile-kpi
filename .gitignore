@@ -1,6 +1,7 @@
 *DS_STORE
 log/
-.idea
+workspace.xml
+tasks.xml
 .env
 *.gem
 *.rbc
