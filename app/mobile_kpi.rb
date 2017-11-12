@@ -8,7 +8,7 @@ require_relative "database/database"
 # Data Sources
 require_relative "datasource/ios_rating_datasource"
 require_relative "datasource/android_rating_datasource"
-require_relative "datasource/fabric_crashes_datasource"
+require_relative "datasource/crashes_datasource"
 
 # Entity
 require_relative "entity/rating"

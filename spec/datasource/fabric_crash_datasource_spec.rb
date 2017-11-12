@@ -1,18 +1,18 @@
-describe MobileKPI::DataSource::FabricCrashes do
+describe MobileKPI::DataSource::Crashes do
 
   before(:each) do
     @app_id = "com.test.io"
 
     allow(Fabricio::Client).to receive(:new).and_return(nil)
 
-    @crashes_datasource ||= MobileKPI::DataSource::FabricCrashes.new
+    @crashes_datasource ||= MobileKPI::DataSource::Crashes.new
 
     FabricAppInfo ||= Struct.new(:platform, :name, :bundle_id)
     @app_stub = FabricAppInfo.new("android", "test", @app_id)
 
-    allow_any_instance_of(MobileKPI::DataSource::FabricCrashes).to receive(:app_from_package).and_return(@app_stub)
-    allow_any_instance_of(MobileKPI::DataSource::FabricCrashes).to receive(:crash_count).and_return(500)
-    allow_any_instance_of(MobileKPI::DataSource::FabricCrashes).to receive(:total_sessions).and_return(1000)
+    allow_any_instance_of(MobileKPI::DataSource::Crashes).to receive(:app_from_package).and_return(@app_stub)
+    allow_any_instance_of(MobileKPI::DataSource::Crashes).to receive(:crash_count).and_return(500)
+    allow_any_instance_of(MobileKPI::DataSource::Crashes).to receive(:total_sessions).and_return(1000)
 
   end
 
