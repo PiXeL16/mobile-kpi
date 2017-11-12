@@ -20,6 +20,7 @@ describe MobileKPI::DataSource::IOSRating do
     expect(rating.version).to_not be_nil
     expect(rating.rating).to_not be_nil
     expect(rating.rating_count).to_not be_nil
+    expect(rating.bundle_identifier).to_not be_nil
   end
 
 end

@@ -14,11 +14,12 @@ module MobileKPI
         # Scrapes App Store
         app.update
 
-        MobileKPI::Entity::AppRating.new(platform: "Android",
-        name: app.title,
-        version: app.current_version,
-        rating: app.rating,
-        rating_count: app.votes)
+        MobileKPI::Entity::Rating.new(platform: "Android",
+                                      name: app.title,
+                                      bundle_identifier: @app_package,
+                                      version: app.current_version,
+                                      rating: app.rating,
+                                      rating_count: app.votes)
 
       end
     end

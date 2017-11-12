@@ -9,6 +9,8 @@ gem "mysql2"
 gem "sequel"
 gem 'dotenv'
 gem 'market_bot'
+gem 'fabricio'
+gem 'activesupport'
 
 group :development do
   gem "pry"

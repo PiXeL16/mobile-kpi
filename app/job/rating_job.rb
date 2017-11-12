@@ -1,6 +1,6 @@
 module MobileKPI
   module Job
-    # iOS Rating manager
+    # iOS Rating job
     class RatingJob < Job
       def self.build
         ios_rating_manager = MobileKPI::Manager::IOSRatingManager.build

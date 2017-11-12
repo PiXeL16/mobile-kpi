@@ -2,12 +2,13 @@ module MobileKPI
   # App rating representation
   module Entity
     # App Rating
-    class AppRating
-      attr_accessor :platform, :name, :version, :rating, :rating_count
+    class Rating
+      attr_accessor :platform, :name, :bundle_identifier, :version, :rating, :rating_count
 
-      def initialize(platform: nil, name: nil, version: nil, rating: nil, rating_count: nil)
+      def initialize(platform: nil, name: nil, bundle_identifier: nil, version: nil, rating: nil, rating_count: nil)
         @platform = platform
         @name = name
+        @bundle_identifier = bundle_identifier
         @version = version
         @rating = rating
         @rating_count = rating_count
@@ -17,6 +18,7 @@ module MobileKPI
         {
             platform: @platform,
             name: @name,
+            bundle_identifier: @bundle_identifier,
             version: @version,
             rating: @rating,
             rating_count: @rating_count

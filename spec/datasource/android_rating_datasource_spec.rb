@@ -20,6 +20,7 @@ describe MobileKPI::DataSource::IOSRating do
     expect(rating.name).to eq("Test")
     expect(rating.version).to eq("434")
     expect(rating.rating).to eq(5)
+    expect(rating.bundle_identifier).to eq(@app_package)
     expect(rating.rating_count).to eq(5)
   end
 
