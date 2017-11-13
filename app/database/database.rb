@@ -34,6 +34,19 @@ module MobileKPI
         end
       end
 
+      unless @_db.table_exists?("oomfreesessions")
+        @_db.create_table :oomfreesessions do
+          primary_key :id
+          String      :platform
+          String      :app_name
+          String      :bundle_identifier
+          Float       :oom_free_sessions
+          DateTime    :date
+          DateTime    :from
+          DateTime    :to
+        end
+      end
+
       @_db
     end
 
@@ -58,6 +71,18 @@ module MobileKPI
           date: Time.now,
           from: app_crashes.from,
           to: app_crashes.to
+      )
+    end
+
+    def store_oom_free_sessions(oom_free_sessions)
+      database[:oomfreesessions].insert(
+          platform: oom_free_sessions.platform,
+          app_name: oom_free_sessions.name,
+          bundle_identifier: oom_free_sessions.bundle_identifier,
+          oom_free_sessions: oom_free_sessions.oom_free_sessions,
+          date: Time.now,
+          from: oom_free_sessions.from,
+          to: oom_free_sessions.to
       )
     end
 

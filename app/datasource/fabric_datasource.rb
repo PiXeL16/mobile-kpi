@@ -31,6 +31,25 @@ module MobileKPI
         )
       end
 
+      def oom_free_sessions(bundle_identifier)
+        app = app_from_package(bundle_identifier)
+        # One day time period of crashes
+        today_start = Time.now - 1.days
+        today_end = Time.now
+
+        oom_free_raw = oom_free_percentage(app, today_start, today_end)
+
+        oom_free = (oom_free_raw * 100).round(1)
+
+        MobileKPI::Entity::OOMFreeSessions.new(platform: app.platform,
+                                       name: app.name,
+                                       bundle_identifier: app.bundle_id,
+                                       oom_free_sessions: oom_free,
+                                       from: today_start,
+                                       to: today_end)
+      end
+
+
       def app_from_package(app_package)
         apps = @client.app.all
         apps.find { |item| item.bundle_identifier == app_package }
@@ -54,6 +73,11 @@ module MobileKPI
 
       def crash_count(app, date_start, date_end)
         @client.app.crashes(app.id, date_start.to_i.to_s, date_end.to_i.to_s, ["all"])
+      end
+
+      # Out of memory free sessions, only works with iOS app identifiers
+      def oom_free_percentage(app, date_start, date_end)
+        @client.app.oomfree(app.id, date_start.to_i.to_s, date_end.to_i.to_s, ["all"])
       end
 
     end

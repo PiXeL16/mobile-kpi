@@ -25,3 +25,16 @@ task :crashes do
     raise.ex
   end
 end
+
+# Gets information about App crashes and stores them
+task :oom_free_sessions do
+  begin
+    puts "Starting OOM Free Sessions job".blue
+    oom_free_job = MobileKPI::Job::OOMFreeSessionsJob.build
+    oom_free_job.trigger
+    puts "OOM Free information stored successfully".green
+  rescue => ex
+    puts "OOM Free job failed".red
+    raise.ex
+  end
+end
