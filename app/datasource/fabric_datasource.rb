@@ -4,7 +4,7 @@ module MobileKPI
   # Provides the Android DataSource to get ratings
   module DataSource
     # Class in charge of proving information about Fabric Crash Rates
-    class Crashes
+    class Fabric
       def initialize
         @client ||= Fabricio::Client.new do |config|
           config.username = ENV["FABRIC_USER_NAME"]

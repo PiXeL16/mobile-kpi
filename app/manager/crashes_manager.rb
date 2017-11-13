@@ -9,7 +9,7 @@ module MobileKPI
 
         android_app_package ||= ENV["ANDROID_APP_PACKAGE"]
         ios_app_bundle ||= ENV["IOS_APP_BUNDLE"]
-        data_source = MobileKPI::DataSource::Crashes.new
+        data_source = MobileKPI::DataSource::Fabric.new
         database = MobileKPI::Database.new
         self.new(data_source, database, android_app_package, ios_app_bundle)
       end
