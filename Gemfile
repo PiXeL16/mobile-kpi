@@ -7,10 +7,12 @@ gem "rest-client"
 gem "rake"
 gem "mysql2"
 gem "sequel"
-gem 'dotenv'
-gem 'market_bot'
-gem 'fabricio'
-gem 'activesupport'
+gem "dotenv"
+gem "market_bot"
+gem "fabricio"
+gem "activesupport"
+gem "jira-ruby"
+
 
 group :development do
   gem "pry"
